@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Cat3r.png" type="Texture" id=1]
+[ext_resource path="res://Cat2r.png" type="Texture" id=2]
+[ext_resource path="res://Cat1r.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://jump.wav" type="AudioStream" id=5]
+[ext_resource path="res://reward.wav" type="AudioStream" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 10.9153 )
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 0.56, 0.420204 )
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.32, 1 )
+shape = SubResource( 2 )
+
+[node name="jumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="FoodSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )

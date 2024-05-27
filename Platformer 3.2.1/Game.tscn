@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ground.png" type="Texture" id=3]
+[ext_resource path="res://Pink.png" type="Texture" id=4]
+[ext_resource path="res://Food.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Game" type="Node2D"]
+
+[node name="Pink" type="Sprite" parent="."]
+position = Vector2( 512.675, 305.969 )
+scale = Vector2( 16.28, 10.1333 )
+texture = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32.2893, 474.872 )
+scale = Vector2( 2.4, 1.92 )
+
+[node name="Platform" parent="." instance=ExtResource( 2 )]
+position = Vector2( 159.164, 420.356 )
+
+[node name="Platform2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 126.515, 227.183 )
+
+[node name="Platform3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 466.608, 311.526 )
+
+[node name="Platform4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 503.338, 487.014 )
+
+[node name="ground" type="Sprite" parent="."]
+position = Vector2( 511.996, 598.177 )
+scale = Vector2( 0.56, 0.440001 )
+texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
+scale = Vector2( 94.8571, 5.81817 )
+shape = SubResource( 1 )
+
+[node name="Food" parent="." instance=ExtResource( 5 )]
+position = Vector2( 243.464, 550.837 )
+scale = Vector2( 1.84, 1.72 )
+
+[node name="FoodCounter" parent="." instance=ExtResource( 6 )]
+margin_left = -0.517555
+margin_top = 0.141483
+margin_right = 39.4824
+margin_bottom = 40.1415
